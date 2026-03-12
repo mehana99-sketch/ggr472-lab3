@@ -6,6 +6,7 @@
 - Event: opacity change when hovering
 - Controls: full screen option, navigation
     - Adjusted position
+- Added and formatted a legend
 
 ## Issues:
 - Accidentally added repository (in GitHub desktop) to 'ggr272-lab3' file, rather than 'GitHub' file, and was confused when the repository was empty.
@@ -22,4 +23,4 @@
 - [ ] A method that filters features shown in the map based on an event
 - [x] Map controls and HTML elements
     - (e.g., a button that initiates an action in the map)
-- [ ] A legend
+- [x] A legend

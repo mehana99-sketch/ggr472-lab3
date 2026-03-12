@@ -102,3 +102,4 @@ map.on('mousemove', 'TorontoCT', (e) => {
 map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 // These are automatically placed on top
+
