@@ -1,6 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibWVoYW5hLW4iLCJhIjoiY21rb2Zxb24wMDVvbzNlcHhhNGwxc3ZpOCJ9.cldXiKJrisAMpXXAL0qobg';
 // Add default public map token from your Mapbox account
 
+// Create map
 const map = new mapboxgl.Map({
     container: 'my-map', // map container ID
     style: 'mapbox://styles/mehana-n/cml8jv1yk008p01qod1la0zv2', // style URL
@@ -9,6 +10,7 @@ const map = new mapboxgl.Map({
     zoom: 12, // starting zoom level
 });
 
+// Load and display layers
 map.on('load', () => {
 
     // Add data sources
@@ -69,8 +71,7 @@ map.on('load', () => {
         'paint': {
             'fill-color': '#c96bd5',
             'fill-opacity': 0.1,
-            'fill-outline-color': 'white',
-            'fill-outline-thickness': 0.5
+            'fill-outline-color': 'white'
         }
     },
         'POI-point');
@@ -89,10 +90,15 @@ map.on('load', () => {
     }, 'POI-point'); //layer is drawn immediately below POI (points are on top)
 })
 
-// Event to add opacity to CT when hovering
+// Event: add opacity to CT when hovering
 map.on('mousemove', 'TorontoCT', (e) => {
     map.setFilter(
         'TorontoCT-hl',
         ['==', ['get', 'AREA_LONG_CODE'], e.features[0].properties.AREA_LONG_CODE]
     );
 });
+
+// Add map controls
+map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+// These are automatically placed on top
