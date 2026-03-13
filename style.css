@@ -29,16 +29,27 @@ body {
     max-width: 200px;
 }
 
-/* formatting legend more, and formatting elements*/
+/* formatting legend elements*/
 .legend span {
     display: inline-block;
     border-radius: 50%; /* curve border */
     /* create circles for each legend element  */
     height: 10px;
     width: 10px;
-    /* margin-right: 5px; */
+    margin-right: 2px; /*position of circle*/
 } 
 
+/* manually set legend circle colours */
+/*  note: is there a quicker/easier way to do this? Can I change symbology further than colour? */
 .legend div:nth-child(2) /*starts at 2*/ span {
     background-color: #c96bd5;
+}
+.legend div:nth-child(3) span {
+    background-color: #3b065a;
+}
+.legend div:nth-child(4) span {
+    background-color: #6ab9fa;
+}
+.legend div:nth-child(5) span {
+    background-color: #50fc01;
 }

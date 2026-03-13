@@ -26,11 +26,11 @@ map.on('load', () => {
     });
     map.addSource('BicycleParking-Outdoor', {
         type: 'geojson',
-        data: ' https://mehana99-sketch.github.io/ggr472-lab3/data/BicycleParking-Outdoor.geojson'
+        data: 'https://mehana99-sketch.github.io/ggr472-lab3/data/BicycleParking-Outdoor.geojson'
     });
     map.addSource('TorontoCT', {
         type: 'geojson',
-        data: ' https://mehana99-sketch.github.io/ggr472-lab3/data/TorontoCT.geojson',
+        data: 'https://mehana99-sketch.github.io/ggr472-lab3/data/TorontoCT.geojson',
         generateID: true // Create a unique ID for each feature
     });
 
@@ -50,7 +50,7 @@ map.on('load', () => {
         'source': 'BicycleParking-Indoor',
         'paint': {
             'circle-radius': 5,
-            'circle-color': '#fc01c1'
+            'circle-color': '#3b065a'
         }
     });
     map.addLayer({
@@ -59,7 +59,7 @@ map.on('load', () => {
         'source': 'BicycleParking-Outdoor',
         'paint': {
             'circle-radius': 5,
-            'circle-color': '#018bfc'
+            'circle-color': '#6ab9fa'
         }
     });
 
@@ -88,6 +88,9 @@ map.on('load', () => {
         'filter': ['==', ['get', 'AREA_LONG_CODE'], ''] // Set an initial filter to return nothing
         // AREA_LONG_CODE is a unique ID for CT
     }, 'POI-point'); //layer is drawn immediately below POI (points are on top)
+
+// Filter POI for those that have a URL only
+map.setFilter('POI-point', ['!=', ['get', 'Link_URL'], null]);
 })
 
 // Event: add opacity to CT when hovering
