@@ -20,10 +20,6 @@ map.on('load', () => {
         data: 'https://mehana99-sketch.github.io/ggr472-lab3/data/StrollTO-POI.geojson'
         // URL to your geojson file, taken from github pages
     });
-    map.addSource('BicycleParking-Indoor', {
-        type: 'geojson',
-        data: 'https://mehana99-sketch.github.io/ggr472-lab3/data/BicycleParking-Indoor.geojson'
-    });
     map.addSource('BicycleParking-Outdoor', {
         type: 'geojson',
         data: 'https://mehana99-sketch.github.io/ggr472-lab3/data/BicycleParking-Outdoor.geojson'
@@ -44,22 +40,24 @@ map.on('load', () => {
             'circle-color': '#50fc01'
         }
     });
-    map.addLayer({
-        'id': 'Indoorparking-point',
-        'type': 'circle',
-        'source': 'BicycleParking-Indoor',
-        'paint': {
-            'circle-radius': 5,
-            'circle-color': '#3b065a'
-        }
-    });
+    // Visualize outdoor parking range by bike capacity
     map.addLayer({
         'id': 'Outdoorparking-point',
         'type': 'circle',
         'source': 'BicycleParking-Outdoor',
         'paint': {
             'circle-radius': 5,
-            'circle-color': '#6ab9fa'
+            'circle-color': [
+                'step',
+                ['get', 'BICYCLE_CAPACITY'],
+                '#cce8ff',
+                5, '#75c1ff', // Colours assigned to values >= each step
+                10, '#018dff',
+                15, '#003c6e',
+                20, '#00192e'],
+            // Outline not working
+            //'circle-outline-color': 'black',
+            //'circle-outline-width' : 3
         }
     });
 

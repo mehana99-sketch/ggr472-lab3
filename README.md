@@ -10,6 +10,7 @@
 - Filtered POI based on existance of URL (can be toggled for all POI, or just those with URL)
 - Mouse changes when hovering over a point (reverts when leaving point)
 - Popup on POI click with name and clickable external URL
+- Bike parking capacity visualized by darkness of circle
 
 ## Issues:
 - Accidentally added repository (in GitHub desktop) to 'ggr272-lab3' file, rather than 'GitHub' file, and was confused when the repository was empty.
@@ -17,9 +18,20 @@
 - I initially tried to convert a gdb to geoJSON using gejson.io, but couldn't make it work.
 -  Filter box is checked upon map loading, but filter isn't actually active until I uncheck and check the box again
 - I couldn't find an easy way to add a condition to the popup, so that it only displays a website link if the feature includes a URL.
+- Visualizing parking points by capacity: some points have no 'BICYCLE_CAPACITY' property, so the point just appears black.
+- Circle outline is not visible
+- I need to figure out how to add steps to the legend
 - (Fixed) page must be published to be able to use GeoJSON link (still some confusion with raw files).
 - (Fixed) 'src="script.js"' will not be read if it's in the script body of index.html. It must be in its own script line. 
 - (Fixed) failed filter 'map.setFilter('POI-point', ['!', ['has', 'Link_URL']]);
 ' etc.; seems that null is still treated as a value, so I had to maneuver around that
 
-
+## Minimum Requirements:
+- [x] A layer with data/symbology that has been classified in some way
+- [x] Pop-up windows that appear on a mouse click or hover
+- [x] A method that changes the visualization of a layer based on an event
+    - (e.g., use an expression to change symbol size based on zoom level change or update paint/layout properties based on mouse event in map or on HTML elements)
+- [x] A method that filters features shown in the map based on an event
+- [x] Map controls and HTML elements
+    - (e.g., a button that initiates an action in the map)
+- [x] A legend
