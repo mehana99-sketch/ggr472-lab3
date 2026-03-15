@@ -22,12 +22,4 @@
 - (Fixed) failed filter 'map.setFilter('POI-point', ['!', ['has', 'Link_URL']]);
 ' etc.; seems that null is still treated as a value, so I had to maneuver around that
 
-## Minimum Requirements:
-- [ ] A layer with data/symbology that has been classified in some way
-- [x] Pop-up windows that appear on a mouse click or hover
-- [x] A method that changes the visualization of a layer based on an event
-    - (e.g., use an expression to change symbol size based on zoom level change or update paint/layout properties based on mouse event in map or on HTML elements)
-- [x] A method that filters features shown in the map based on an event
-- [x] Map controls and HTML elements
-    - (e.g., a button that initiates an action in the map)
-- [x] A legend
+
