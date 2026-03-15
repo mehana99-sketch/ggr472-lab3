@@ -29,13 +29,13 @@
             <h2>Lab 3 - Styling and Interactivity</h2>
             <p>
                 Are you visiting Toronto, hoping to find things to see? Do you prefer biking and walking over other
-                forms of transportation?
-                <br> This is your one-stop website! <br>
+                forms of transportation? This is your one-stop website! <br>
                 Compiled from <a target=”_blank” href="https://open.toronto.ca/">Toronto's open data portal</a>,
                 <!-- external link to data portal -->
                 is StrollTO's list of points of interest - there are up to 15 listed in each neighbourhood.
-                <br> Points of interest are green, indoor bike parking is pink, and outdoor bike parking is blue. See
-                also that green spaces are red, and bodies of water are navy.
+                <br> <br>
+                Click the check box to see only points of interest linked to website. Try clicking a POI to access its
+                website link!
             </p>
         </div>
     </div>
@@ -60,6 +60,14 @@
         <div><span></span>Stroll TO POI</div>
         <!-- legend contents here -->
     </div>
+
+    <!-- interactivity section (checkbox for filter) -->
+    <div class='map-data-container'>
+        <!-- Checkbox to filter/unfilter layer -->
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="layercheck" checked>
+            <label class="form-check-label" for="layercheck">Show POI with URL only</label>
+        </div>
 
 </body>
 

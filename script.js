@@ -89,20 +89,44 @@ map.on('load', () => {
         // AREA_LONG_CODE is a unique ID for CT
     }, 'POI-point'); //layer is drawn immediately below POI (points are on top)
 
-// Filter POI for those that have a URL only
-map.setFilter('POI-point', ['!=', ['get', 'Link_URL'], null]);
-})
+    // Event: add opacity to CT when hovering
+    map.on('mousemove', 'TorontoCT', (e) => {
+        map.setFilter(
+            'TorontoCT-hl',
+            ['==', ['get', 'AREA_LONG_CODE'], e.features[0].properties.AREA_LONG_CODE]
+        );
+    });
 
-// Event: add opacity to CT when hovering
-map.on('mousemove', 'TorontoCT', (e) => {
-    map.setFilter(
-        'TorontoCT-hl',
-        ['==', ['get', 'AREA_LONG_CODE'], e.features[0].properties.AREA_LONG_CODE]
-    );
+    // Add map controls
+    map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
+    map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+    // These are automatically placed on top
+
+    //Toggle layer filtering
+    document.getElementById('layercheck').addEventListener('change', (e) => {
+        if (e.target.checked) {
+            // Apply filter (only POIs with a URL)
+            map.setFilter('POI-point', ['!=', ['get', 'Link_URL'], null]);
+        } else {
+            // Remove filter (show all POIs)
+            map.setFilter('POI-point', null);
+        }
+    })
+
+    //Mouse visibility
+    map.on('mouseenter', 'POI-point', () => {
+        map.getCanvas().style.cursor = 'pointer'; // Switch cursor to pointer when mouse is over POI
+        map.on('mouseleave', 'POI-point', () => {
+            map.getCanvas().style.cursor = ''; // Switch cursor back when leaving POI
+        });
+    });
+
+    // Popup with external link
+    map.on('click', 'POI-point', (e) => {
+        new mapboxgl.Popup() // Declare new popup object on each click
+            .setLngLat(e.lngLat) // Use method to set coordinates of popup based on mouse click location
+            .setHTML("<b>" + e.features[0].properties.Title + "</b>" + "<br>" + //Add title
+            "Website: <a target='_blank' href=" + e.features[0].properties.Link_URL + ">Open Link</a>") //Make clickable link
+            .addTo(map); // Show popup on map
+    });
 });
-
-// Add map controls
-map.addControl(new mapboxgl.FullscreenControl(), 'top-left');
-map.addControl(new mapboxgl.NavigationControl(), 'top-left');
-// These are automatically placed on top
-

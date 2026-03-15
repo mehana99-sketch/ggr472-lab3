@@ -9,7 +9,7 @@ body {
 /* formatting map */
 .map-container {
     position: absolute;
-    height: 500px;
+    height: 480px;
     /* if map isn't fullscreen, height must be specified or it won't display */
     bottom: 0;
     width: 100%;
